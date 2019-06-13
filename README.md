@@ -1,5 +1,12 @@
 # mksms
-[![Coveralls](https://img.shields.io/coveralls/github/gitpoint/git-point.svg?style=flat-square)](https://coveralls.io/github/gitpoint/git-point)
+<p align="left">
+  <a href="https://www.npmjs.com/package/mksms">
+    <img src="https://img.shields.io/npm/v/mksms.svg" alt="npm version" height="18">
+  </a>
+  <a href="https://github.com/mksms/mksms-javascript/blob/master/LICENSE.md">
+    <img src="https://img.shields.io/github/license/mksms/mksms-javascript.svg">
+  </a>
+</p>
 This is mksms api implement in js to make thier easy utilisation. 
 
 ## Table of contents
