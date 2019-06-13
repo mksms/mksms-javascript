@@ -1,8 +1,50 @@
 # mksms
-this is mksms api implement in js to make thier easy utilisation. As a simple example, most of my code looks like this:
+[![Coveralls](https://img.shields.io/coveralls/github/gitpoint/git-point.svg?style=flat-square)](https://coveralls.io/github/gitpoint/git-point)
+This is mksms api implement in js to make thier easy utilisation. 
 
+## Table of contents
+* [Getting Started](#getting-started)
+* [Prerequisites](#prerequisites)
+* [Installing](#installing)
+* [Use package](#use-package)
+* [impot](#import)
+    * [es2017](#with-es2017)
+    * [es2015](#with-es2015)
+    * [html](#in-jour-html-web-page)
+* [use](#use)
+* [Authors](#authors)
+* [License](#license)
+
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+You need and `API_KEY` and `API_HASH`, get they on http://mksms.cm
+
+### Installing
+To install they package 
+```shell
+    $npm i mksms
+```
+ 
+## Use package
+You can import the package in several ways depending on the version of js that you use and the situation. 
+### import
+#### with es2017
+```javascript
+    import * as mksms from 'mksms';
+```
+#### with es2015
 ```javascript
     var mksms = require('mksms');
+```
+#### in jour html web page 
+```html
+<script src="/assets/dist/mksms.js"></script>
+```
+### use
+```javascript
+    
     const config = {
         api_key:"MY_API_KEY",
         api_hash:"MY_API_HASH"
@@ -21,3 +63,13 @@ this is mksms api implement in js to make thier easy utilisation. As a simple ex
         }
     }); 
 ```
+## Running the tests
+```sh
+    $npm test
+```
+## Authors
+* **Eugene Fezeu** - *Initial work* - [@fez2000](https://github.com/@fez2000)
+
+## License
+
+This project is licensed under the Apache 2.0 License - see the [LICENSE.md](LICENSE.md) file for details
