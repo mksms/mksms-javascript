@@ -7,17 +7,17 @@
     <img src="https://img.shields.io/github/license/mksms/mksms-javascript.svg">
   </a>
 </p>
-This is mksms api implement in js to make thier easy utilisation. 
+This is the mksms API implement in js to make it easy to use.
 
 ## Table of contents
 * [Getting Started](#getting-started)
 * [Prerequisites](#prerequisites)
 * [Installing](#installing)
 * [Use package](#use-package)
-* [impot](#import)
+* [import](#import)
     * [es2017](#with-es2017)
     * [es2015](#with-es2015)
-    * [html](#in-jour-html-web-page)
+    * [html](#in-your-html-web-page)
 * [use](#use)
 * [Authors](#authors)
 * [License](#license)
@@ -26,7 +26,7 @@ This is mksms api implement in js to make thier easy utilisation.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
-You need and `API_KEY` and `API_HASH`, get they on http://mksms.cm
+You need an `API_KEY` and `API_HASH`, get them on our website http://mksms.cm
 
 ### Installing
 To install they package 
@@ -45,7 +45,7 @@ You can import the package in several ways depending on the version of js that y
 ```javascript
     var mksms = require('mksms');
 ```
-#### in jour html web page 
+#### in your html web page 
 ```html
 <script src="/assets/dist/mksms.js"></script>
 ```
@@ -75,7 +75,7 @@ You can import the package in several ways depending on the version of js that y
     $npm test
 ```
 ## Authors
-* **Eugene Fezeu** - *Initial work* - [@fez2000](https://github.com/@fez2000)
+* **Eugene Fezeu** - *Initial work* - [@fez2000](https://github.com/fez2000)
 
 ## License
 
