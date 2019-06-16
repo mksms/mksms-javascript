@@ -29,7 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 You need an `API_KEY` and `API_HASH`, get them on our website http://mksms.cm
 
 ### Installing
-To install they package 
+To install the package 
 ```shell
     $npm i mksms
 ```
