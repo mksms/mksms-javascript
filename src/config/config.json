@@ -1,0 +1,18 @@
+{
+    "end_points": {
+        "send_sms":"/sms/send/",
+        "get_sms":"/sms/available/",
+        "start_verify":"/phone/verify/start/",
+        "confirm_verify":"/phone/verify/confirm/"
+    },
+    "base_url":"https://api.mksms.cm",
+    "directions":{
+        "in":-1,
+        "out":1,
+        "both":0
+    },
+    "states":{
+        "read":true,
+        "unread":false
+    }
+}

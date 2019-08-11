@@ -1,0 +1,20 @@
+{
+    "test_config":{
+        "api_key": "BDCAA0C858",
+        "api_hash": "f7e88b92f324bdd09d195019053a2d613c3ae6c5b1dcadf988c2b18e75770530"
+    },
+    "fake_message":{
+        "to":{
+            "number":"697898466f", 
+            "name":"moi"
+        },
+        "body":"Salut molah"
+    },
+    "good_message" :{
+        "to":{
+            "number":"697898466", 
+            "name":"moi"
+        },
+        "body":"Salut molah"
+    }
+}
