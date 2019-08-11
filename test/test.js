@@ -1,22 +1,31 @@
 'use strict';
 var should = require('should');
-var { Client } = require("../src/mksms.es5");
-let test_config =  {api_key:'BDCAA0C858',api_hash:'f7e88b92f324bdd09d195019053a2d613c3ae6c5b1dcadf988c2b18e75770530'}
+const { Client } = require("../src/mksms.es5");
+const {test_config,fake_message,good_message} = require('./data/data.json');
+const args = require('yargs').argv;
 
-let fake_message ={
-        to:{"number":"3698368636", "name":"fedim"},
-        body:"Salut molah"
-    };
+if(args.key){
+    test_config.api_key = args.key; 
+}
 
-let good_message ={
-        to:{"number":"698368636g", "name":"fedim"},
-        body:"Salut molah"
-    };
+if(args.hash){
+    test_config.api_hash = args.hash;
+}
 
+if(args.number){
+    good_message.to.number = args.number; 
+}    
+
+if(args.name){
+    good_message.to.name = args.name; 
+}
  
+if(args.body){
+    good_message.body = args.body; 
+}
 
     describe('Test of Mksms API', function(){
-        describe('conection ')
+       
         describe('mksms test  message',function(){
             it('should error on incorrect number',(done)=>{
                 let client = new Client(test_config.api_key,test_config.api_hash);

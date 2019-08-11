@@ -35,5 +35,7 @@
   "module": "src/mksms.es5.js",
   "es2015": "src/mksms.js",
   "typings": "src/mksms.d.ts",
-  "devDependencies": {}
+  "devDependencies": {
+    "yargs": "^13.3.0"
+  }
 }

@@ -1,49 +1,30 @@
 const { Observable  } = require("rxjs");
-const {Contact} = require('./Contact');
-const {Message} = require('./Message');
-const {getRequest,postRequest} = require('../../data/data');
-const ENDPOINT = {'send_sms':'/sms/send/',
-'get_sms':'/sms/available/',
-'start_verify':'/phone/verify/start/',
-'confirm_verify':'/phone/verify/confirm/'};
-
-const BASE_URL = "http://api.mksms.cm";
-
-const BOTH = 0,
-OUT = 1,
-IN = -1,
-READ = true,
-UNREAD = false;
+const { Contact } = require('./Contact');
+const { Message } = require('./Message');
+const { get_request, post_request } = require('../../interface/interface');
+const { directions, base_url, end_points, states } = require('../../config/config.json') ;
 
 
- function Client(api_key,api_hash){
+
+function Client(api_key,api_hash){
     this.api_key = api_key;
-    this.api_hash = api_hash;
-    
+    this.api_hash = api_hash;    
 }
 
 Client.prototype.send_message = function(message){
-        /*This methode is used to send a message.
-        Args:
-            * message: Message object
-        
-        Return:
-            * promise 
-        */
-        
-       if("to" in message){
-        if("name" in message["to"] ){
-            if("number" in message["to"]){
+    if(message["to"]){
+        if(message["to"]["name"] ){
+            if(message["to"]["number"]){
                 var contact = new Contact(message["to"]["number"],message["to"]["name"]);
             }else{
                 return Observable.create((observer)=>{ 
-                    observer.error(new Error("mksms: number in to is missing"));
+                    observer.error(new Error("mksms: number is missing in to "));
                 });
             }
             
         }else{
             return Observable.create((observer)=>{
-                observer.error(new Error("mksms: to is missing"));
+                observer.error(new Error("mksms: name is missing in to"));
             });
         }
     }else{
@@ -51,28 +32,19 @@ Client.prototype.send_message = function(message){
             observer.error(new Error("mksms: to is missing"));
        }); 
     }
-    if("body" in message){
+    if(message["body"]){
         var _message = new Message(contact,message["body"]);
     }else{
         var _message = new Message(contact,{});
     }
     let data;
     data = _message.get();
-    
     data['api_key'] = this.api_key;
     data['api_hash'] =  this.api_hash;
-    return postRequest(BASE_URL+ENDPOINT['send_sms'],data);
-    }
-Client.prototype.get_messages = function(min_date=null, direction=OUT,read=UNREAD,timestamp=null){
-        /*This method is used to get the list of messages.
-        Args:
-            * min_date: datetime|str object representating the minimal date to use
-            * direction: Union[BOTH|OUT|IN] the direction of the sms to return
-            * status: Union[READ|UNREAD|BOTH]
-            
-        Return:
-            [Message, ...]
-        */
+    return post_request(base_url+end_points['send_sms'],data);
+}
+
+Client.prototype.get_messages = function(min_date=null, direction=directions.in,read=states.unread,timestamp=null){
     let params = {'direction':direction, 'read':read};
     params['api_key'] = this.api_key;
     params['api_hash'] = this.api_hash;
@@ -82,43 +54,21 @@ Client.prototype.get_messages = function(min_date=null, direction=OUT,read=UNREA
     if(timestamp!= null){
         params['timestamp'] = timestamp;
     }
-    return getRequest(BASE_URL+ENDPOINT['get_sms'],null ,params); 
+    return get_request(base_url+end_points['get_sms'],null ,params); 
 }
+
 Client.prototype.start_verify = function(number, name){
-        /*THis method is used to start the number verification process.
-        
-        Args:
-            * number
-            
-        Return:
-            * Response object
-        */
-        
-    
-        
-        data = {'number':number, 'name':name};
-        data['api_key'] = this.api_key;
-        data['api_hash'] = this.api_hash;
-        
-        endpoint = ENDPOINT['start_verify'];
-        return postRequest(BASE_URL+endpoint, data);
-    
-}  
-Client.prototype.confirm_verify = function ( number, code){
-        /*THis method is used to confirm the code for a started verification process
-        
-        Args:
-            * number
-            * code
-            
-        Return:
-            * Response object
-        */   
-        data = {'number':number, 'code':code}
-        data['api_key'] = this.api_key
-        data['api_hash'] = this.api_hash
-        
-        endpoint = ENDPOINT['confirm_verify']
-    return    postRequest(BASE_URL+endpoint, data)
+    data = {'number':number, 'name':name};
+    data['api_key'] = this.api_key;
+    data['api_hash'] = this.api_hash;
+    return post_request(base_url+end_points['start_verify'], data);
 }
+
+Client.prototype.confirm_verify = function ( number, code){ 
+    data = {'number':number, 'code':code};
+    data['api_key'] = this.api_key;
+    data['api_hash'] = this.api_hash;
+    return    post_request(base_url+end_points['confirm_verify'], data);
+}
+
 module.exports.Client = Client;

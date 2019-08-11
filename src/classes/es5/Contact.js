@@ -2,9 +2,8 @@
 
 const _Contact =  {"name":null,"number":null};
 function Contact(number,name=""){
-
-this.number = number;
-this.name = name;
+    this.number = number;
+    this.name = name;
 }
 Contact.prototype.get = function(){
     let contact = _Contact;
