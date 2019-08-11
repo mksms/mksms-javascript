@@ -1,6 +1,6 @@
 {
   "name": "mksms",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A js lib for mksms Api",
   "files": [
     "src/**",

@@ -14,7 +14,7 @@ This is mksms api implement in js to make thier easy utilisation.
 * [Prerequisites](#prerequisites)
 * [Installing](#installing)
 * [Use package](#use-package)
-* [impot](#import)
+* [import](#import)
     * [es2017](#with-es2017)
     * [es2015](#with-es2015)
     * [html](#in-jour-html-web-page)

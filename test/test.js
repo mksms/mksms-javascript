@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
 var { Client } = require("../src/mksms.es5");
-let test_config =  {api_key:'830EA3BB2A',api_hash:'73249341d85f566b6f2b8cef4563d6c149efe4df2b43f21776a6c9faf7f61af5'}
+let test_config =  {api_key:'BDCAA0C858',api_hash:'f7e88b92f324bdd09d195019053a2d613c3ae6c5b1dcadf988c2b18e75770530'}
 
 let fake_message ={
         to:{"number":"3698368636", "name":"fedim"},
@@ -15,7 +15,8 @@ let good_message ={
 
  
 
-    describe('mksms test api request', function(){
+    describe('Test of Mksms API', function(){
+        describe('conection ')
         describe('mksms test  message',function(){
             it('should error on incorrect number',(done)=>{
                 let client = new Client(test_config.api_key,test_config.api_hash);
