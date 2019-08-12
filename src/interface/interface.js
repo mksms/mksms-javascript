@@ -1,6 +1,9 @@
 const { Observable  } = require("rxjs");
-const axios = require('axios');
-
+const {base_url} = require('../config/config.json');
+const axios = require('axios').create({
+    baseURL: base_url,
+    headers: {"Content-type": "application/json; charset=utf-8"}
+  });
 exports.get_request = (url,data=null,params=null) =>{
     
     return Observable

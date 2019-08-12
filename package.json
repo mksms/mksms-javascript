@@ -1,14 +1,14 @@
 {
   "name": "mksms",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A js lib for mksms Api",
   "files": [
     "src/**",
-    "dist",
     "test"
   ],
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha --reporter  spec",
+    "test:browser": "mocha   --reporter mocha-simple-html-reporter/index.js --reporter-options output=./test/log.html & open-cli ./test/log.html "
   },
   "repository": {
     "type": "git",
@@ -16,16 +16,17 @@
   },
   "keywords": [
     "mksms",
-    "sms"
+    "sms",
+    "gsm"
   ],
   "author": "fez2000",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "dependencies": {
     "axios": "^0.19.0",
-    "rxjs": "^6.5.1",
-    "should": "^13.2.3"
+    "mocha": "^6.2.0",
+    "rxjs": "^6.5.1"
   },
-  "homepage": "http://mksms.cm",
+  "homepage": "https://api.mksms.cm/",
   "bugs": {
     "url": "https://github.com/mksms/mksms-javascript/issues"
   },
@@ -36,6 +37,8 @@
   "es2015": "src/mksms.js",
   "typings": "src/mksms.d.ts",
   "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha-simple-html-reporter": "^1.1.0",
     "yargs": "^13.3.0"
   }
 }

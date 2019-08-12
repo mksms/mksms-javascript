@@ -3,14 +3,14 @@ import { Contact } from './Contact';
 import { Message } from './Message';
 import { Observable }  from 'rxjs';
 import { get_request, post_request } from '../interface/interface';
-import { directions, base_url, end_points, states } from '../config/config.json'
+import { directions,  end_points, states } from '../config/config.json';
 
 export class Client {
     constructor(api_key,api_hash){
         this.api_key = api_key;
         this.api_hash = api_hash;
     }
-    
+
     send_message(message){
         if(message["to"]){
             if( message["to"]["name"] ){
@@ -37,12 +37,11 @@ export class Client {
         }else{
             var _message = new Message(contact,{});
         }
-        let data;
-        data = _message.get();
-        
+
+        let data = _message.get();
         data['api_key'] = this.api_key;
         data['api_hash'] =  this.api_hash;
-        return  post_request(base_url+end_points['send_sms'],data);
+        return  post_request(end_points['send_sms'],data);
     }
 
     get_messages(min_date=null, direction=directions.in,read=states.unread,timestamp=null){
@@ -55,21 +54,21 @@ export class Client {
         if(timestamp != null){
             params['timestamp'] = timestamp;
         }
-        return get_request(base_url+end_points['get_sms'],null ,params);
+        return get_request(end_points['get_sms'],null ,params);
     }
 
     start_verify(number, name){
-        data = {'number':number, 'name':name};
+        let data = {'number':number, 'name':name};
         data['api_key'] = this.api_key;
         data['api_hash'] = this.api_hash;
-        return post_request(base_url+end_points['start_verify'], data);
+        return post_request(end_points['start_verify'], data);
     }  
 
     confirm_verify( number, code){   
-        data = {'number':number, 'code':code};
+        let data = {'number':number, 'code':code};
         data['api_key'] = this.api_key;
         data['api_hash'] = this.api_hash;
-        return post_request(base_url+end_points['confirm_verify'], data);
+        return post_request(end_points['confirm_verify'], data);
     }
 }
 

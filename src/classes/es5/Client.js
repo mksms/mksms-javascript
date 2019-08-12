@@ -2,7 +2,7 @@ const { Observable  } = require("rxjs");
 const { Contact } = require('./Contact');
 const { Message } = require('./Message');
 const { get_request, post_request } = require('../../interface/interface');
-const { directions, base_url, end_points, states } = require('../../config/config.json') ;
+const { directions, end_points, states } = require('../../config/config.json');
 
 
 
@@ -37,11 +37,10 @@ Client.prototype.send_message = function(message){
     }else{
         var _message = new Message(contact,{});
     }
-    let data;
-    data = _message.get();
+    let data = _message.get();
     data['api_key'] = this.api_key;
     data['api_hash'] =  this.api_hash;
-    return post_request(base_url+end_points['send_sms'],data);
+    return post_request(end_points['send_sms'],data);
 }
 
 Client.prototype.get_messages = function(min_date=null, direction=directions.in,read=states.unread,timestamp=null){
@@ -54,21 +53,21 @@ Client.prototype.get_messages = function(min_date=null, direction=directions.in,
     if(timestamp!= null){
         params['timestamp'] = timestamp;
     }
-    return get_request(base_url+end_points['get_sms'],null ,params); 
+    return get_request(end_points['get_sms'],null ,params); 
 }
 
 Client.prototype.start_verify = function(number, name){
-    data = {'number':number, 'name':name};
+    let data = {'number':number, 'name':name};
     data['api_key'] = this.api_key;
     data['api_hash'] = this.api_hash;
-    return post_request(base_url+end_points['start_verify'], data);
+    return post_request(end_points['start_verify'], data);
 }
 
 Client.prototype.confirm_verify = function ( number, code){ 
-    data = {'number':number, 'code':code};
+    let  data = {'number':number, 'code':code};
     data['api_key'] = this.api_key;
     data['api_hash'] = this.api_hash;
-    return    post_request(base_url+end_points['confirm_verify'], data);
+    return    post_request(end_points['confirm_verify'], data);
 }
 
 module.exports.Client = Client;

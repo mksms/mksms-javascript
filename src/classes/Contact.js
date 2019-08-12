@@ -1,6 +1,6 @@
 export const _Contact =  {"name":null,"number":null};
 export class Contact{
-    constructor(number,name=""){
+    constructor(number,name){
         this.number = number;
         this.name = name;        
     }

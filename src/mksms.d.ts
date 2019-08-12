@@ -41,12 +41,12 @@ declare namespace mksms{
  
     class Contact  {
         /*This class represent a contact number. It is a convenience class.*/
-         number:string;
-         name:string;
-        constructor( number:string, name="");
+        number:string;
+        name:string;
+        constructor( number:string, name:string);
         get():_Contact;
         set(contact:_Contact):void;
-        set_name( name:string):void;
+        set_name(name:string):void;
         set_number(number:string):void;
         is(name:string):boolean;
     }

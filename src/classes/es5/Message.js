@@ -16,7 +16,7 @@ Args:
 */
 function Message(contact,body,read=states.unread,direction=directions.out){
     if(contact instanceof( Contact)){
-        this.contact = contact
+        this.contact = contact;
     }else{
         this.contact  = new Contact(contact);
     }
