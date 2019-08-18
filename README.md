@@ -164,9 +164,6 @@ In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/inde
 
 ### Get messages
 
-- name: **get_messages**
-- params:
-
 |Params |Type |Default value |Required |
 |----|----|----|----|----|
 |min_date |Date |null |not required |
@@ -174,7 +171,8 @@ In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/inde
 |read |boolean |false |not required |
 |timestamp | Date |null |not required |
 
-- return: Promise<Array>
+* name: **get_messages**
+* return: Promise< Array >
 
 ```json
    []
@@ -182,14 +180,12 @@ In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/inde
 
 ### Send messages
 
-- name: **send_messages**
-- params:
-
 |Params |Type |Default value |Required |
 |----|----|----|----|----|
 |message|Message | |true|
 
-- return: Promise<Object>
+* name: **send_messages**
+* return: Promise< Object >
 
 ```json
    {
@@ -202,22 +198,20 @@ or there is an error
 
 ```json
   {
-     "success": false, 
-     "message": "Invalid ..." 
+     "success": false,
+     "message": "Invalid ..."
   }
 ```
 
 ### Start verify
-
-- name: **start_verify**
-- params:
 
 |Params |Type |Default value |Required |
 |----|----|----|----|----|
 |number|string | |true|
 |name|string | |true|
 
-- return: Promise<Object>
+* name: **start_verify**
+* return: Promise< Object>
 
 ```json
    {
@@ -229,22 +223,20 @@ or there is an error
 
 ```json
   {
-     "success": false, 
-     "message": "Invalid ..." 
+     "success": false,
+     "message": "Invalid ..."
   }
 ```
 
 ### Confirm verify
-
-- name: **confirm_verify**
-- params:
 
 |Params |Type |Default value |Required |
 |----|----|----|----|----|
 |number|string | |true|
 |code|string | |true|
 
-- return: Promise<Object>
+* name: **confirm_verify**
+* return: Promise< Object >
 
 ```json
    {
@@ -256,8 +248,8 @@ or there is an error
 
 ```json
   {
-     "success": false, 
-     "message": "Invalid ..." 
+     "success": false,
+     "message": "Invalid ..."
   }
 ```
 
