@@ -152,11 +152,11 @@ or directly from the command line
 
 In the console
 
-![test_mksms_console_result](https://github.com/mksms/mksms-javascript/test/result/mksms_test_js_console_result.png)
+![test_mksms_console_result](https://github.com/mksms/mksms-javascript/blob/master/test/result/mksms_test_js_console_result.png)
 
-In the [browser](https://github.com/mksms/mksms-javascript/test/log.html)
+In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/index.html)
 
-![test_mksms_browser_result](./test/result/mksms_test_js_browser_result.png)
+![test_mksms_browser_result](https://github.com/mksms/mksms-javascript/blob/master/test/result/mksms_js_test_browser_result.png)
 
 **NB**: *the api test fails if api_key and api_hash are not valid*.
 
@@ -164,17 +164,102 @@ In the [browser](https://github.com/mksms/mksms-javascript/test/log.html)
 
 ### Get messages
 
-|---|----|----|----|----|----|
-|Name |Params |Type |Default value |Required |Return |
-|---|----|----|----|----|----|
-|get_messages|
-|---|----|----|----|----|----|
+- name: **get_messages**
+- params:
+
+|Params |Type |Default value |Required |
+|----|----|----|----|----|
+|min_date |Date |null |not required |
+|direction | number | -1 |not required |
+|read |boolean |false |not required |
+|timestamp | Date |null |not required |
+
+- return: Promise<Array>
+
+```json
+   []
+```
 
 ### Send messages
 
+- name: **send_messages**
+- params:
+
+|Params |Type |Default value |Required |
+|----|----|----|----|----|
+|message|Message | |true|
+
+- return: Promise<Object>
+
+```json
+   {
+     "success": true,
+     "cost": 1
+   }
+```
+
+or there is an error
+
+```json
+  {
+     "success": false, 
+     "message": "Invalid ..." 
+  }
+```
+
 ### Start verify
 
+- name: **start_verify**
+- params:
+
+|Params |Type |Default value |Required |
+|----|----|----|----|----|
+|number|string | |true|
+|name|string | |true|
+
+- return: Promise<Object>
+
+```json
+   {
+     "success": true
+   }
+```
+
+or there is an error
+
+```json
+  {
+     "success": false, 
+     "message": "Invalid ..." 
+  }
+```
+
 ### Confirm verify
+
+- name: **confirm_verify**
+- params:
+
+|Params |Type |Default value |Required |
+|----|----|----|----|----|
+|number|string | |true|
+|code|string | |true|
+
+- return: Promise<Object>
+
+```json
+   {
+     "success": true
+   }
+```
+
+or there is an error
+
+```json
+  {
+     "success": false, 
+     "message": "Invalid ..." 
+  }
+```
 
 ## Authors
 
