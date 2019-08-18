@@ -164,14 +164,15 @@ In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/inde
 
 ### Get messages
 
+* name: **get_messages**
+
 |Params |Type |Default value |Required |
-|----|----|----|----|----|
+|----|----|----|----|
 |min_date |Date |null |not required |
 |direction | number | -1 |not required |
 |read |boolean |false |not required |
 |timestamp | Date |null |not required |
 
-* name: **get_messages**
 * return: Promise< Array >
 
 ```json
@@ -180,11 +181,12 @@ In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/inde
 
 ### Send messages
 
+* name: **send_messages**
+
 |Params |Type |Default value |Required |
-|----|----|----|----|----|
+|----|----|----|----|
 |message|Message | |true|
 
-* name: **send_messages**
 * return: Promise< Object >
 
 ```json
@@ -205,12 +207,13 @@ or there is an error
 
 ### Start verify
 
-|Params |Type |Default value |Required |
-|----|----|----|----|----|
-|number|string | |true|
-|name|string | |true|
-
 * name: **start_verify**
+
+|Params |Type |Default value |Required |
+|----|----|----|----|
+|number |string | |true|
+|name |string | |true|
+
 * return: Promise< Object>
 
 ```json
@@ -230,12 +233,13 @@ or there is an error
 
 ### Confirm verify
 
+* name: **confirm_verify**
+
 |Params |Type |Default value |Required |
-|----|----|----|----|----|
+|----|----|----|----|
 |number|string | |true|
 |code|string | |true|
 
-* name: **confirm_verify**
 * return: Promise< Object >
 
 ```json
