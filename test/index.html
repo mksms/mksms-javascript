@@ -1,0 +1,605 @@
+
+<html>
+    <head>
+        <title>Mocha</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+        @charset "utf-8";
+
+body {
+  margin:0;
+}
+
+#mocha {
+  font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 60px 50px;
+}
+
+#mocha ul,
+#mocha li {
+  margin: 0;
+  padding: 0;
+}
+
+#mocha ul {
+  list-style: none;
+}
+
+#mocha h1,
+#mocha h2 {
+  margin: 0;
+}
+
+#mocha h1 {
+  margin-top: 15px;
+  font-size: 1em;
+  font-weight: 200;
+}
+
+#mocha h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#mocha h1 a:hover {
+  text-decoration: underline;
+}
+
+#mocha .suite .suite h1 {
+  margin-top: 0;
+  font-size: .8em;
+}
+
+#mocha .hidden {
+  display: none;
+}
+
+#mocha h2 {
+  font-size: 12px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+#mocha .suite {
+  margin-left: 15px;
+}
+
+#mocha .test {
+  margin-left: 15px;
+  overflow: hidden;
+}
+
+#mocha .test.pending:hover h2::after {
+  content: '(pending)';
+  font-family: arial, sans-serif;
+}
+
+#mocha .test.pass.medium .duration {
+  background: #c09853;
+}
+
+#mocha .test.pass.slow .duration {
+  background: #b94a48;
+}
+
+#mocha .test.pass::before {
+  content: '✓';
+  font-size: 12px;
+  display: block;
+  float: left;
+  margin-right: 5px;
+  color: #00d6b2;
+}
+
+#mocha .test.pass .duration {
+  font-size: 9px;
+  margin-left: 5px;
+  padding: 2px 5px;
+  color: #fff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.2);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.2);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.2);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#mocha .test.pass.fast .duration {
+  display: none;
+}
+
+#mocha .test.pending {
+  color: #0b97c4;
+}
+
+#mocha .test.pending::before {
+  content: '◦';
+  color: #0b97c4;
+}
+
+#mocha .test.fail {
+  color: #c00;
+}
+
+#mocha .test.fail pre {
+  color: black;
+}
+
+#mocha .test.fail::before {
+  content: '✖';
+  font-size: 12px;
+  display: block;
+  float: left;
+  margin-right: 5px;
+  color: #c00;
+}
+
+#mocha .test pre.error {
+  color: #c00;
+  max-height: 300px;
+  overflow: auto;
+}
+
+#mocha .test .html-error {
+  overflow: auto;
+  color: black;
+  display: block;
+  float: left;
+  clear: left;
+  font: 12px/1.5 monaco, monospace;
+  margin: 5px;
+  padding: 15px;
+  border: 1px solid #eee;
+  max-width: 85%; /*(1)*/
+  max-width: -webkit-calc(100% - 42px);
+  max-width: -moz-calc(100% - 42px);
+  max-width: calc(100% - 42px); /*(2)*/
+  max-height: 300px;
+  word-wrap: break-word;
+  border-bottom-color: #ddd;
+  -webkit-box-shadow: 0 1px 3px #eee;
+  -moz-box-shadow: 0 1px 3px #eee;
+  box-shadow: 0 1px 3px #eee;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#mocha .test .html-error pre.error {
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+  padding: 0;
+  margin: 0;
+  margin-top: 18px;
+  max-height: none;
+}
+
+/**
+ * (1): approximate for browsers not supporting calc
+ * (2): 42 = 2*15 + 2*10 + 2*1 (padding + margin + border)
+ *      ^^ seriously
+ */
+#mocha .test pre {
+  display: block;
+  float: left;
+  clear: left;
+  font: 12px/1.5 monaco, monospace;
+  margin: 5px;
+  padding: 15px;
+  border: 1px solid #eee;
+  max-width: 85%; /*(1)*/
+  max-width: -webkit-calc(100% - 42px);
+  max-width: -moz-calc(100% - 42px);
+  max-width: calc(100% - 42px); /*(2)*/
+  word-wrap: break-word;
+  border-bottom-color: #ddd;
+  -webkit-box-shadow: 0 1px 3px #eee;
+  -moz-box-shadow: 0 1px 3px #eee;
+  box-shadow: 0 1px 3px #eee;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#mocha .test h2 {
+  position: relative;
+}
+
+#mocha .test a.replay {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  text-decoration: none;
+  vertical-align: middle;
+  display: block;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  background: #eee;
+  font-size: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-transition:opacity 200ms;
+  -moz-transition:opacity 200ms;
+  -o-transition:opacity 200ms;
+  transition: opacity 200ms;
+  opacity: 0.3;
+  color: #888;
+}
+
+#mocha .test:hover a.replay {
+  opacity: 1;
+}
+
+#mocha-report.pass .test.fail {
+  display: none;
+}
+
+#mocha-report.fail .test.pass {
+  display: none;
+}
+
+#mocha-report.pending .test.pass,
+#mocha-report.pending .test.fail {
+  display: none;
+}
+#mocha-report.pending .test.pass.pending {
+  display: block;
+}
+
+#mocha-error {
+  color: #c00;
+  font-size: 1.5em;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+#mocha-stats {
+  position: fixed;
+  top: 15px;
+  right: 10px;
+  font-size: 12px;
+  margin: 0;
+  color: #888;
+  z-index: 1;
+}
+
+#mocha-stats .progress {
+  float: right;
+  padding-top: 0;
+
+  /**
+   * Set safe initial values, so mochas .progress does not inherit these
+   * properties from Bootstrap .progress (which causes .progress height to
+   * equal line height set in Bootstrap).
+   */
+  height: auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: initial;
+}
+
+#mocha-stats em {
+  color: black;
+}
+
+#mocha-stats a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#mocha-stats a:hover {
+  border-bottom: 1px solid #eee;
+}
+
+#mocha-stats li {
+  display: inline-block;
+  margin: 0 5px;
+  list-style: none;
+  padding-top: 11px;
+}
+
+#mocha-stats canvas {
+  width: 40px;
+  height: 40px;
+}
+
+#mocha code .comment { color: #ddd; }
+#mocha code .init { color: #2f6fad; }
+#mocha code .string { color: #5890ad; }
+#mocha code .keyword { color: #8a6343; }
+#mocha code .number { color: #2f6fad; }
+
+@media screen and (max-device-width: 480px) {
+  #mocha {
+    margin: 60px 0px;
+  }
+
+  #mocha #stats {
+    position: absolute;
+  }
+}
+#mocha .test.pass pre {
+    display: none;
+}
+
+#mocha .test.fail pre {
+    display: none;
+}
+
+#mocha .test pre.error {
+    display: block;
+}
+
+#mocha .test .html-error pre.error {
+    box-shadow: none;
+}
+
+#mocha .test:hover h2:after {
+    color: #888888;
+    content: "(view source)";
+    font-family: arial;
+    font-size: 12px;
+    position: relative;
+    right: -10px;
+    top: 0;
+}
+
+#mocha .test.pass.pending h2 {
+    cursor: auto;
+}
+
+#mocha .mocha-header {
+    right: 30px;
+    position: fixed;
+    top: 15px;
+    font-size: 14px;
+    margin: 0;
+    color: #888;
+    z-index: 1;
+}
+
+#mocha .mocha-header em {
+    font-style: normal;
+    color: black;
+}
+
+#mocha .mocha-header ul {
+    display: inline-block;
+}
+
+#mocha .mocha-stats li {
+    display: inline-block;
+    margin: 0 5px;
+    list-style: none;
+    padding-top: 11px;
+}
+
+#mocha .mocha-menu {
+    margin-right: 10px;
+}
+
+#mocha .mocha-menu li {
+    display: inline-block;
+    margin-left: 10px;
+    list-style: none;
+}
+
+#mocha .mocha-menu li span {
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    padding: 3px 7px 2px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+    border-radius: 5px;
+    user-select: none;
+}
+
+#mocha .mocha-menu li span.checked {
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,.2);
+}
+
+#mocha .toggle-passes {
+    background: #b94a48;
+}
+
+        </style>
+    </head>
+    <body>
+        <div id="mocha">
+            <div class="mocha-header">
+                <ul class="mocha-menu">
+                    <li><span id="toggle-passes" class="toggle-passes">show failures only</span></li>
+                </ul>
+                <ul class="mocha-stats">
+                    <li class="passes">passes: <em>16</em></li>
+                    <li class="pending">pending: <em>0</em></li>
+                    <li class="failures">failures: <em>5</em></li>
+                    <li class="duration">duration: <em>11.1s</em></li>
+                </ul>
+            </div>
+            <ul id="report"><li class="suite"><h1>Test of mksms package</h1><ul><li class="suite"><h1>Test config data</h1><ul><li class="test pass fast"><h2>config must exist<span class="duration">18ms</span></h2><pre><code>expect(config).to.exist;  
+done();</code></pre></li><li class="test pass fast"><h2>config must be object<span class="duration">8ms</span></h2><pre><code>expect(config).to.be.an(&#x27;object&#x27;);
+
+done();</code></pre></li><li class="test pass fast"><h2>config must content keys end_points base_url directions states<span class="duration">10ms</span></h2><pre><code>expect(config).to.only.have.keys(&#x27;end_points&#x27;, &#x27;base_url&#x27;, &#x27;directions&#x27;, &#x27;states&#x27;);              
+done();</code></pre></li><li class="test pass fast"><h2>end_points proprity must be object<span class="duration">2ms</span></h2><pre><code>expect(config.end_points).to.be.an(&#x27;object&#x27;);
+done();</code></pre></li><li class="test pass fast"><h2>end_points must content keys send_sms get_sms start_verify confirm_verify<span class="duration">2ms</span></h2><pre><code>expect(config.end_points).to.only.have.keys(&#x27;send_sms&#x27;,&#x27;get_sms&#x27;,&#x27;start_verify&#x27;,&#x27;confirm_verify&#x27;);              
+done();</code></pre></li><li class="test pass fast"><h2>end_points must only not empty string propiety<span class="duration">27ms</span></h2><pre><code>expect(config.end_points.send_sms).to.be.an(&#x27;string&#x27;);
+expect(config.end_points.send_sms).to.not.be.empty();
+expect(config.end_points.get_sms).to.be.an(&#x27;string&#x27;);
+expect(config.end_points.get_sms).to.not.be.empty();
+expect(config.end_points.start_verify).to.be.an(&#x27;string&#x27;);
+expect(config.end_points.start_verify).to.not.be.empty();
+expect(config.end_points.confirm_verify).to.be.an(&#x27;string&#x27;);
+expect(config.end_points.confirm_verify).to.not.be.empty();
+done();</code></pre></li><li class="test pass fast"><h2>base_url proprity must be not empty string<span class="duration">6ms</span></h2><pre><code>expect(config.base_url).to.be.an(&#x27;string&#x27;);
+expect(config.base_url).to.not.be.empty();
+done();</code></pre></li><li class="test pass fast"><h2>directions proprity must be object<span class="duration">1ms</span></h2><pre><code>expect(config.directions).to.be.an(&#x27;object&#x27;);
+done();</code></pre></li><li class="test pass fast"><h2>directions must content keys in out both<span class="duration">2ms</span></h2><pre><code>expect(config.directions).to.only.have.keys(&#x27;in&#x27;,&#x27;out&#x27;,&#x27;both&#x27;);              
+done();</code></pre></li><li class="test pass fast"><h2>directions must have in propriety equal to -1, out 1 and both 0<span class="duration">9ms</span></h2><pre><code>expect(config.directions.in).to.be.an(&#x27;number&#x27;);
+expect(config.directions.in).to.be.equal(-1);
+expect(config.directions.out).to.be.an(&#x27;number&#x27;);
+expect(config.directions.out).to.be.equal(1);
+expect(config.directions.both).to.be.an(&#x27;number&#x27;);
+expect(config.directions.both).to.be.equal(0);
+done();</code></pre></li><li class="test pass fast"><h2>end_points proprity must be object<span class="duration">1ms</span></h2><pre><code>expect(config.states).to.be.an(&#x27;object&#x27;);
+done();</code></pre></li><li class="test pass fast"><h2>end_points must content keys read unread<span class="duration">1ms</span></h2><pre><code>expect(config.states).to.only.have.keys(&#x27;read&#x27;,&#x27;unread&#x27;);              
+done();</code></pre></li><li class="test pass fast"><h2>end_points must only not empty string propiety<span class="duration">5ms</span></h2><pre><code>expect(config.states.read).to.be.an(&#x27;boolean&#x27;);
+expect(config.states.read).to.be.ok();
+expect(config.states.unread).to.be.an(&#x27;boolean&#x27;);
+expect(config.states.unread).to.not.be.ok();
+done();</code></pre></li></ul></li><li class="suite"><h1>Class instance Test</h1><ul><li class="test pass fast"><h2>can create instance of Contact <span class="duration">1ms</span></h2><pre><code>expect(new Contact(&#x22;ds&#x22;,&#x22;fdf&#x22;)).to.be.an(Contact);
+               done();</code></pre></li><li class="test pass fast"><h2>can create instance of Message <span class="duration">1ms</span></h2><pre><code>expect(new Message({&#x22;number&#x22;:&#x22;237633902321&#x22;,&#x22;name&#x22;:&#x22;talla&#x22;},&#x22;ds&#x22;)).to.be.an(Message);
+               done();</code></pre></li><li class="test pass fast"><h2>can create instance of Client <span class="duration">1ms</span></h2><pre><code>expect(new Client(&#x22;ds&#x22;,&#x22;fdf&#x22;)).to.be.an(Client);
+               done();</code></pre></li></ul></li><li class="suite"><h1>mksms test  message</h1><ul><li class="test fail"><h2>should send  message on correct data</h2><pre><code>let client = new Client(test_config.api_key,test_config.api_hash);
+client.send_message(good_message)
+.subscribe({
+    next:(rep)=&#x3E;{
+        
+        expect(rep).to.have.property(&#x27;success&#x27;,true);
+        done();
+    },
+    error:(error)=&#x3E;{
+        expect(error).to.not.ok();
+        done();
+    }
+})</code></pre><pre class="error">Error: Timeout of 2500ms exceeded. For async tests and hooks, ensure &#x22;done()&#x22; is called; if returning a Promise, ensure it resolves. (/home/eugene/projects/js/test/test.js)
+    at listOnTimeout (internal/timers.js:535:17)
+    at processTimers (internal/timers.js:479:7)</pre></li><li class="test fail"><h2>should send  message on correct data</h2><pre><code>let client = new Client(test_config.api_key,test_config.api_hash);
+client.send_message(fake_message)
+.subscribe({
+    next:(rep)=&#x3E;{
+        
+        expect(rep).to.have.property(&#x27;success&#x27;,false);
+        done();
+    },
+    error:(error)=&#x3E;{
+        expect(error).to.not.ok();
+        done();
+    }
+})</code></pre><pre class="error">Error: Timeout of 2500ms exceeded. For async tests and hooks, ensure &#x22;done()&#x22; is called; if returning a Promise, ensure it resolves. (/home/eugene/projects/js/test/test.js)
+    at listOnTimeout (internal/timers.js:535:17)
+    at processTimers (internal/timers.js:479:7)</pre></li></ul></li><li class="suite"><h1>mksms test get message</h1><ul><li class="test fail"><h2>should reponse</h2><pre><code>let client = new Client(test_config.api_key,test_config.api_hash);
+client.get_messages()
+.subscribe({
+    next:(rep)=&#x3E;{
+        expect(rep).to.exist; 
+        done();
+    },
+    error:(error)=&#x3E;{
+        expect(error).to.not.ok();
+        done();
+    }
+})</code></pre><pre class="error">Error: Timeout of 2500ms exceeded. For async tests and hooks, ensure &#x22;done()&#x22; is called; if returning a Promise, ensure it resolves. (/home/eugene/projects/js/test/test.js)
+    at listOnTimeout (internal/timers.js:535:17)
+    at processTimers (internal/timers.js:479:7)</pre></li></ul></li><li class="suite"><h1>mksms test post start_verify MboateK with number 677456798</h1><ul><li class="test fail"><h2>shoul reponse success </h2><pre><code>let client = new Client(test_config.api_key,test_config.api_hash);
+client.start_verify(&#x27;677456798&#x27;, &#x27;MboateK&#x27;)
+.subscribe({
+    next:(rep)=&#x3E;{
+        expect(rep).to.exist;
+        expect(rep).to.have.property(&#x27;success&#x27;,true);
+        done();
+    },
+    error:(error)=&#x3E;{
+        expect(error).to.not.ok();
+        done();
+    }
+})</code></pre><pre class="error">Error: expected { success: false,
+  message: &#x27;This api_key and api_hash combination was not found. Please check your api settings!&#x27; } to have a property &#x27;success&#x27; of true, but got false
+    at Assertion.assert (node_modules/expect.js/index.js:96:13)
+    at Assertion.property (node_modules/expect.js/index.js:388:12)
+    at Object.next (test/test.js:200:45)
+    at SafeSubscriber.__tryOrUnsub (node_modules/rxjs/internal/Subscriber.js:205:16)
+    at SafeSubscriber.next (node_modules/rxjs/internal/Subscriber.js:143:22)
+    at Subscriber._next (node_modules/rxjs/internal/Subscriber.js:89:26)
+    at Subscriber.next (node_modules/rxjs/internal/Subscriber.js:66:18)
+    at axios.post.then (src/interface/interface.js:46:19)
+    at processTicksAndRejections (internal/process/task_queues.js:86:5)</pre></li></ul></li><li class="suite"><h1>mksms test post confirm_verify MboateK</h1><ul><li class="test fail"><h2>shoul reponse success </h2><pre><code>let client = new Client(test_config.api_key,test_config.api_hash);
+client.confirm_verify(&#x27;677456798&#x27;, &#x27;12345&#x27;)
+.subscribe({
+    next:(rep)=&#x3E;{
+        expect(rep).to.exist;
+        expect(rep).to.have.property(&#x27;success&#x27;,true);
+        done();
+    },
+    error:(error)=&#x3E;{
+        expect(error).to.not.ok();
+        done();
+    }
+})</code></pre><pre class="error">Error: Timeout of 2500ms exceeded. For async tests and hooks, ensure &#x22;done()&#x22; is called; if returning a Promise, ensure it resolves. (/home/eugene/projects/js/test/test.js)
+    at listOnTimeout (internal/timers.js:535:17)
+    at processTimers (internal/timers.js:479:7)</pre></li></ul></li></ul></li></ul>
+        </div>
+        <script>
+        function hideSuitesWithout(className) {
+    var suites = document.querySelectorAll('#report > .suite');
+
+    for (var i = 0; i < suites.length; i++) {
+        let suite = suites[i];
+
+        var els = suite.getElementsByClassName(className);
+        if (!els.length) {
+            suite.classList.add('hidden');
+        }
+    }
+}
+
+function unhide() {
+    var suites = document.getElementsByClassName('suite hidden');
+
+    while (suites.length) {
+        suites[0].classList.remove('hidden');
+    }
+}
+
+function togglePasses() {
+    var report = document.getElementById('report');
+
+    report.classList.toggle('hide-passes');
+
+    if (report.classList.contains('hide-passes')) {
+        hideSuitesWithout('test fail');
+    } else {
+        unhide();
+    }
+}
+
+document.getElementById('toggle-passes').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    this.classList.toggle('checked');
+
+    togglePasses();
+});
+
+var tests = document.getElementsByClassName('test');
+
+for (var i = 0; i < tests.length; i++) {
+    var elem = tests[i];
+    var head = elem.children[0];
+
+    head.onclick = function () {
+        var code = this.parentElement.children[1];
+        var display = code.style.display;
+
+        if (display && display === 'block') {
+            code.style.display = 'none';
+        } else {
+            code.style.display = 'block';
+        }
+    };
+}
+        </script>
+    </body>
+</html>
