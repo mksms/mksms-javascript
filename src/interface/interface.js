@@ -11,12 +11,10 @@ exports.get_request = (url,data=null,params=null) =>{
         axios.get(
             url,
             {
-            data:{
-                data
-            },
-            params:{
-                params
-            }
+            data:data
+            ,
+            params:params
+            
         }).then((rep)=>{
             
             event.next(rep["data"]);
@@ -24,7 +22,7 @@ exports.get_request = (url,data=null,params=null) =>{
         })
         .catch((err)=>{
             
-            event.error(  err);
+            event.error(err);
             event.complete();
         });
     });
@@ -40,9 +38,8 @@ exports.post_request = (url,data,params) =>{
             data:{
                 data
             },
-            params:{
-                params
-            }
+            params:params
+            
         }).then((rep)=>{
             
             event.next(rep["data"]);
@@ -50,7 +47,7 @@ exports.post_request = (url,data,params) =>{
         })
         .catch((err)=>{
             
-            event.error(  err);
+            event.error(err);
             event.complete();
         });
     });

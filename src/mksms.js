@@ -1,6 +1,19 @@
+(function(){
+    'use strict';
+    const { Client } = require('./classes/Client');
+    const { Contact } = require('./classes/Contact');
+    const { Message } = require('./classes/Message');
+    const { directions, states } = require('./config/config.json')
+    var mksms = { Message, Contact, Client, directions, states }; 
+    module.exports = mksms; 
+})();
+ 
+    
 
-import { Contact } from './classes/Contact';
-import { Message } from './classes/Message';
-import { Client } from './classes/Client';
-import { directions, states } from './config/config.json';
-export { Message, Contact, Client, directions, states};
+    
+ 
+
+     
+     
+
+    

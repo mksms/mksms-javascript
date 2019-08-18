@@ -1,9 +1,5 @@
 import { Observable } from "rxjs";
 
-
-
-
-
 declare namespace mksms{
     //Api configuration
     interface Config{

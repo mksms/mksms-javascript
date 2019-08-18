@@ -1,10 +1,11 @@
 {
   "name": "mksms",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A js lib for mksms Api",
   "files": [
     "src/**",
-    "test"
+    "test",
+    "dist"
   ],
   "scripts": {
     "test": "mocha --reporter  spec",
@@ -26,14 +27,14 @@
     "mocha": "^6.2.0",
     "rxjs": "^6.5.1"
   },
-  "homepage": "https://api.mksms.cm/",
+  "homepage": "https://mksms.cm/",
   "bugs": {
     "url": "https://github.com/mksms/mksms-javascript/issues"
   },
   "directories": {
     "test": "test"
   },
-  "module": "src/mksms.es5.js",
+  "main": "src/mksms.js",
   "es2015": "src/mksms.js",
   "typings": "src/mksms.d.ts",
   "devDependencies": {

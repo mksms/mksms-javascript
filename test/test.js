@@ -1,6 +1,6 @@
 'use strict';
 var expect = require('expect.js');
-const { Client, Message, Contact,  directions, states } = require("../src/mksms.es5");
+const { Client, Message, Contact,  directions, states } = require("../src/mksms");
 const {test_config,fake_message,good_message} = require('./data/data.json');
 const args = require('yargs').argv;
 
@@ -138,9 +138,9 @@ if(args.body){
         })
        
         describe('mksms test  message',function(){
-            this.timeout(1500);
+            this.timeout(2500);
   
-            it('should reponse on correct number',(done)=>{
+            it('should send  message on correct data',(done)=>{
                 let client = new Client(test_config.api_key,test_config.api_hash);
                 client.send_message(good_message)
                 .subscribe({
@@ -154,10 +154,26 @@ if(args.body){
                         done();
                     }
                 })
+            });
+            it('should send  message on correct data',(done)=>{
+                let client = new Client(test_config.api_key,test_config.api_hash);
+                client.send_message(fake_message)
+                .subscribe({
+                    next:(rep)=>{
+                        
+                        expect(rep).to.have.property('success',false);
+                        done();
+                    },
+                    error:(error)=>{
+                        expect(error).to.not.ok();
+                        done();
+                    }
+                })
             })
         })
         
         describe('mksms test get message',function(){
+            this.timeout(2500);
             it('should reponse',(done)=>{
                 let client = new Client(test_config.api_key,test_config.api_hash);
                 client.get_messages()
@@ -174,6 +190,7 @@ if(args.body){
             })
         });
         describe('mksms test post start_verify MboateK with number 677456798',function(){
+            this.timeout(2500);
             it('shoul reponse success ',(done)=>{
                 let client = new Client(test_config.api_key,test_config.api_hash);
                 client.start_verify('677456798', 'MboateK')
@@ -191,6 +208,7 @@ if(args.body){
             })
         });
         describe('mksms test post confirm_verify MboateK',function(){
+            this.timeout(2500);
             it('shoul reponse success ',(done)=>{
                 let client = new Client(test_config.api_key,test_config.api_hash);
                 client.confirm_verify('677456798', '12345')

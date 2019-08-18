@@ -5,14 +5,14 @@
     },
     "fake_message":{
         "to":{
-            "number":"697898466f", 
+            "number":"697898466f",
             "name":"moi"
         },
         "body":"Salut molah"
     },
     "good_message" :{
         "to":{
-            "number":"697898466", 
+            "number":"697898466",
             "name":"moi"
         },
         "body":"Salut molah"

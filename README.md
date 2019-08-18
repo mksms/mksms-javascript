@@ -11,10 +11,17 @@ This is the mksms API implement in js to make it easy to use.
 * [Prerequisites](#prerequisites)
 * [Installing](#installing)
 * [Use package](#use-package)
-* [Import](#import)
-  * [es2017](#with-es2017)
-  * [es2015](#with-es2015)
+* [Import](#import-in-nodejs)
 * [Use](#use)
+* [Test](#test)
+  * [Launch the test](#launch-the-test)
+  * [Set up the tests](#set-up-the-tests)
+  * [Test results](#test-results)
+* [Documentation of methods](#methods-docs)
+  * [Get messages](#get-messages)
+  * [Send messages](#send-messages)
+  * [Start verify](#start-verify)
+  * [Confirm verify](#Confirm-verify)
 * [Authors](#authors)
 * [License](#license)
 
@@ -36,20 +43,18 @@ To install the package run
 
 ## Use package
 
-You can import the package in several ways depending on the version of js that you use and the situation.
+To use the package you must first import it. here is an example of import.
 
-### Import
-
-#### With es2017
+### Import in nodejs
 
 ```javascript
-    import * as mksms from 'mksms';
+    const mksms = require('mksms');
 ```
 
-#### With es2015
+or
 
 ```javascript
-    var mksms = require('mksms');
+    const {Client, Message, Contact} = require('mksms');
 ```
 
 ### Use
@@ -59,7 +64,7 @@ You can import the package in several ways depending on the version of js that y
     const config = {
         api_key:"MY_API_KEY",
         api_hash:"MY_API_HASH"
-    }
+    };
     let client = new mksms.Client(config.api_key,config.api_hash);
 
     client.send_message({
@@ -81,17 +86,95 @@ You can import the package in several ways depending on the version of js that y
     });
 ```
 
-## Running the tests
+or
+
+```javascript
+    var config = {
+        api_key:"MY_API_KEY",
+        api_hash:"MY_API_HASH"
+    };
+    var contact = new Contact("+237692392932","jean");
+    var message = new Message(contact,"hello");
+    var client = new Client(config.api_key,config.api_hash);
+    client.send_message(message);
+```
+
+## Test
+
+This must be done to test the configurations and the proper functioning of the API.
+
+### Launch the test
 
 ```sh
     $npm test
 ```
 
-or
+or to view test results in the browser
 
 ```sh
     $npm run test:browser
 ```
+
+### Set up the tests
+
+You can change the test configuration in the `./test/data/data.json` file.
+
+```json
+    {
+        "test_config":{
+            "api_key": "BDCAA0C858",
+            "api_hash": "f7e88b92f324bdd09d195019053a2d613c3ae6c5b1dcadf988c2b18e75770530"
+        },
+        "fake_message":{
+            "to":{
+                "number":"697898466f",
+                "name":"moi"
+            },
+            "body":"Salut molah"
+        },
+        "good_message" :{
+            "to":{
+                "number":"697898466",
+                "name":"moi"
+            },
+            "body":"Salut molah"
+        }
+    }
+```
+
+or directly from the command line
+
+```sh
+    $npm run test --key="MY_API_KEY" --hash="MY_API_HASH" --number="number" --name="name" --body="message"
+```
+
+### Test results
+
+In the console
+
+![test_mksms_console_result](https://github.com/mksms/mksms-javascript/test/result/mksms_test_js_console_result.png)
+
+In the [browser](https://github.com/mksms/mksms-javascript/test/log.html)
+
+![test_mksms_browser_result](./test/result/mksms_test_js_browser_result.png)
+
+**NB**: *the api test fails if api_key and api_hash are not valid*.
+
+## Methods docs
+
+### Get messages
+
+|---|----|----|----|----|----|
+|Name |Params |Type |Default value |Required |Return |
+|---|----|----|----|----|----|
+|get_messages|
+|---|----|----|----|----|----|
+
+### Send messages
+
+### Start verify
+
+### Confirm verify
 
 ## Authors
 
