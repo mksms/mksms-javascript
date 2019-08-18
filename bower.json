@@ -1,0 +1,29 @@
+{
+  "name": "mksms",
+  "description": "A js lib for mksms Api",
+  "main": "src/mksms.js",
+  "authors": [
+    "fez2000"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mksms/mksms-javascript.git"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "mksms",
+    "sms",
+    "gsm"
+  ],
+  "homepage": "https://mksms.cm",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  }
+}
