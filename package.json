@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "test": "mocha --reporter  spec",
-    "test:browser": "mocha   --reporter mocha-simple-html-reporter/index.js --reporter-options output=./test/log.html & open-cli ./test/log.html "
+    "test:browser": "mocha   --reporter mocha-simple-html-reporter/index.js --reporter-options output=./test/index.html & open-cli ./test/index.html "
   },
   "repository": {
     "type": "git",
