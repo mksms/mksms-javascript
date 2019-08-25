@@ -173,7 +173,7 @@ In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/inde
 |read |boolean |false |not required |
 |timestamp | Date |null |not required |
 
-* return: Promise< Array >
+* return: Observable< Array >
 
 ```json
    []
@@ -187,7 +187,7 @@ In the [browser](https://github.com/mksms/mksms-javascript/blob/master/test/inde
 |----|----|----|----|
 |message|Message | |true|
 
-* return: Promise< Object >
+* return: Observable< Object >
 
 ```json
    {
@@ -214,7 +214,7 @@ or there is an error
 |number |string | |true|
 |name |string | |true|
 
-* return: Promise< Object>
+* return: Observable< Object>
 
 ```json
    {
@@ -240,7 +240,7 @@ or there is an error
 |number|string | |true|
 |code|string | |true|
 
-* return: Promise< Object >
+* return: Observable< Object >
 
 ```json
    {
